@@ -13,6 +13,8 @@ for i in range(n):
     # Part a
     # Count when 2types are 75W
     num_75 = 0
+    # See if you can think of a way to avoid this for loop. It is ok to do,
+    # but also useful to know multiple ways.
     for bulb in bulbs:
         if bulb == 75:
             num_75 += 1
