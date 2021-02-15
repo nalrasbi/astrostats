@@ -7,7 +7,7 @@ Created on Thu Feb  4 10:05:34 2021
 import matplotlib.pyplot as plt
 import numpy as np
 mu, sigma = 0, 1  # mean and standard deviation
-sum = np.zeros([100, ])
+sum = np.zeros([100, ]) # Caution on using sum as a variable name. sum is a native Python function.
 for i in range(10000):
     s = np.random.normal(mu, sigma, 100)
     if (i == 1):
@@ -19,6 +19,10 @@ for i in range(10000):
         plt.show()
 
     sum = np.add(s, sum)
+    
+# - In this problem, you want to compute the mean of all s values on each
+# iteration. Here you are creating an array sum for which each element
+# is the sum of 1000 elements.
 xmean_norm = sum / 10000
 print(xmean_norm.shape)
 print(xmean_norm)
