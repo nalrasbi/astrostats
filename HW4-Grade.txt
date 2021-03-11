@@ -1,0 +1,3 @@
+Total: 20/20
+
+But should have more discussion on interpretation of problem 4.

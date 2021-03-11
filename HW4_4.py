@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-dataset = np.loadtxt('xray.txt').astype(int)
+dataset = np.loadtxt('../../astrostats/hws/xray.txt').astype(int)
 print(dataset[:10])
 # Count the number of times k flares occur in a single day
 Nflares_in_day = []
-Nflares_today = 1 
+Nflares_today = 1
 Ndays= 1
 year, month, day, hour, minute = dataset[0]
 for event in dataset[1:]:
@@ -31,7 +31,7 @@ bins = np.arange(min(Nflares_in_day)-0.5, max(Nflares_in_day)+1.5, 1)
 plt.hist(Nflares_in_day, density=True, bins=bins, color='k', histtype='step', label='X-ray flare data')
 plt.xlabel('Number of X-ray flares in a day')
 plt.ylabel('Probability Density')
-plt.title('The probability of X-ra flare data ocurring and Poisson PDF in a day')
+plt.title('The probability of X-ray flare data ocurring and Poisson PDF in a day')
 plt.plot(klist, Pklist, '-ok', label='Poisson PDF')
 plt.legend()
 # Plot the time between flares
@@ -45,7 +45,7 @@ for event in dataset:
 time_between_flares = []
 for i in range(1, len(dataset2)):
     delta = dataset2[i] - dataset2[i-1]
-    time_between_flares.append(delta)  
+    time_between_flares.append(delta)
 plt.figure()
 plt.hist(time_between_flares, bins=30, density=True)
 plt.xlabel('Hours between X-ray flares')
