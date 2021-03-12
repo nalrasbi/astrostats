@@ -29,14 +29,14 @@ print(f"{100*percentage4} CI included mu")
 # Plot them
 plt.figure()
 plt.hist(xbar3, bins=100, density=True);
-plt.xlabel('Sample Mean')
-plt.ylabel("PDF")
+plt.xlabel('$\overline{X}$')
+plt.ylabel("P(z)")
 plt.title('$\overline{X} = $%.2f +/- %.2f' % (np.mean(xbar3), delta3))
 plt.savefig('HW6_2_1.pdf')
 plt.figure()
 delta5 = 2.262*np.std(samples4)/np.sqrt(n)
 plt.hist(xbar4, bins=100, density=True);
-plt.xlabel('Sample Mean')
-plt.ylabel("PDF")
+plt.xlabel('$\overline{X}$')
+plt.ylabel("P(t)")
 plt.title('$\overline{X} = $ %.2f +/- %.2f' % (np.mean(xbar4), delta5))
 plt.savefig('HW6_2_2.pdf')
