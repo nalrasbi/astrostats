@@ -9,6 +9,12 @@ bootstrap_dist = np.random.choice(values, replace=True, size=(N,n))
 sample_means = np.mean(bootstrap_dist, axis=1)
 p3mean = np.mean(sample_means)
 p3ci = 2.262 * np.std(bootstrap_dist) / np.sqrt(n)
+
+# The motivation for using the bootstrap is that we don't know the sampling
+# distribution of xo. As a result, we don't know that the equation you used
+# applies. So you should use the bootstrap-derived sampling distribution
+# to compute the confidence interval directly (see soln).
+
 # Plot
 plt.figure()
 plt.hist(sample_means, density=True, bins=100, label='Sampling Dist')

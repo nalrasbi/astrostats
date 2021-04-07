@@ -15,7 +15,8 @@ plt.figure()
 plt.plot(xi, yi, '.k')
 plt.xlabel('X')
 plt.ylabel('Y')
-plt.title('A scatter Plot of N(x,y) Values with Randomly n=20(x,y) Pairs')
+# Most readers will know it is a scatter plot, so it is not needed in title.
+plt.title('N (x,y) population values and n = 20 randomly drawn (x,y) pairs')
 # Part 2
 indicies = np.random.choice(range(N), replace=True, size=n)
 plt.plot(xi[indicies], yi[indicies], 'or')
@@ -46,10 +47,10 @@ meanb = np.mean(blist)
 bdelta_estimate = sorted(np.abs(blist - meanb))[int(B*0.95)]
 bins = np.linspace(0.4, 1.6, 100)
 plt.figure()
-plt.hist(alist, bins=bins, density=True, alpha=0.25, color='blue', label='intercept')
+plt.hist(alist, bins=bins, density=True, alpha=0.25, color='blue', label='intercept (a)')
 plt.axvline(meana-adelta_estimate, color='blue')
 plt.axvline(meana+adelta_estimate, color='blue')
-plt.hist(blist, bins=bins, density=True, alpha=0.25, color='black', label='slope')
+plt.hist(blist, bins=bins, density=True, alpha=0.25, color='black', label='slope (b)')
 plt.axvline(meanb-bdelta_estimate, color='black')
 plt.axvline(meanb+bdelta_estimate, color='black')
 plt.legend()
@@ -67,19 +68,23 @@ xlist = xi[indicies]
 ylist = yi[indicies]
 a = linreg_intercept(xlist, ylist)
 b = linreg_slope(xlist, ylist)
+# Great job. Very few students did this part correctly.
 SSres = np.sum((ylist - (a  + b*xlist))**2.0)
 sxx = np.sum((xlist - np.mean(xlist))**2.0)
 adelta = tvalue * np.sqrt((SSres/(n-2.0)) * (1.0/n + np.mean(xlist)**2.0/sxx))
 bdelta = tvalue * np.sqrt(SSres/((n-2.0)*sxx))
 print("95 percent CI of a in [%.2f, %.2f]" % (a-adelta, a+adelta))
 print("95 percent CI of b in [%.2f, %.2f]" % (b-bdelta, b+bdelta))
-print("95 percent CI of a by scipy in [%.2f, %.2f]"\
-      %((scipy_solution.intercept-(tvalue*scipy_solution.intercept_stderr)\
-         ,scipy_solution.intercept+(tvalue*scipy_solution.intercept_stderr))))
+if False:
+    #AttributeError: 'LinregressResult' object has no attribute 'intercept_stderr'
+    print("95 percent CI of a by scipy in [%.2f, %.2f]"\
+          %((scipy_solution.intercept-(tvalue*scipy_solution.intercept_stderr)\
+             ,scipy_solution.intercept+(tvalue*scipy_solution.intercept_stderr))))
 print("95 percent CI of b by scipy in [%.2f, %.2f]"\
       %((scipy_solution.slope-(tvalue*scipy_solution.stderr)\
          ,scipy_solution.slope+(tvalue*scipy_solution.stderr))))
-# Part8
+
+    # Part8
 err_on_a = alist - alpha
 err_on_b = blist - beta
 plt.figure()

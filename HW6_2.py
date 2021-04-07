@@ -11,7 +11,7 @@ delta1 = 1.96 * sigma / np.sqrt(n)
 print(f"95% CI on sample mean xbar = {xbar1} +/- {delta1}")
 xbar2 = np.mean(data)
 talpha = 2.262
-sample_std2 = np.std(data)
+sample_std2 = np.std(data, ddof=1)
 delta2 = talpha * sample_std2 / np.sqrt(n)
 print(f"95% CI on sample mean xbar = {xbar2} +/- {delta2}")
 #Check part 1
