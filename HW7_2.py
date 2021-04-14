@@ -30,3 +30,5 @@ for onez in z:
     if -z005 < onez < z005:
         counter += 1
 print(counter/N)
+
+# Great work.
