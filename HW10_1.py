@@ -53,6 +53,8 @@ def run_mcmc(data, N, theta_start, prop_width=0.1):
     # Return the chain and posterior
     return chain, posterior
 
+# Do you know why there is a mis-match near theta=1? You'll probably be
+# able to figure it out by printing out diagnostics as I did in my solution.
 # Run the MCMC
 N = 100000
 theta_start = 1.0
