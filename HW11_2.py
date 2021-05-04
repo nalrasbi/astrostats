@@ -12,6 +12,7 @@ def log_LxP(theta, D):
 #     if theta > 1 or theta < -1:
 #         return -np.inf
     
+    # Where does this equation come from?
     lnp = -(theta - D)**2/2
     return np.sum(lnp)
     
