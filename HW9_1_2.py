@@ -32,6 +32,9 @@ for theta in thetalist:
     p0 = np.sum(np.abs(r0 - data[0]) <= delta/2)/N
    # Prob(random num near r1)
     r1 = np.random.normal(theta, 1, size=N)
+    # This is not correct (although it gives the correct curve).
+    # You need to find points in a small box. Plot out points r0 and r1 like
+    # I did in my soln,. and highlight the ones selected to see the difference.
     p1 = np.sum(np.abs(r1 - data[1]) <= delta/2)/N
     post = prior * p0 * p1
     posterior_sim.append(post)
