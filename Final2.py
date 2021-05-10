@@ -4,7 +4,7 @@ import emcee
 import scipy.stats as stats
 
 # Note: My code needs about 7 min to run
-
+# Noted ;)
 
 D = [4.72, 9.11, 5.57, 7.66, 4.69, 4.86, 6.51, 6.65, 4.77, 0.26, 4.67, 6.37, 5.05, 5.91,
 5.54, 2.13, 6.77, 3.84, 4., 6.18, 3.54, 5.52, 3.29, 4.62, 4.25, 4.08, 3.37, 4.91,
@@ -15,6 +15,9 @@ D = [4.72, 9.11, 5.57, 7.66, 4.69, 4.86, 6.51, 6.65, 4.77, 0.26, 4.67, 6.37, 5.0
 # 12.2.1 Frequentist
 # Devore, A-11, Table A.7, for v > 40
 def chisq_crit(dof, end):
+    # Could use
+    # scipy.stats.chi2.ppf(0.975, n-1) 
+    # scipy.stats.chi2.ppf(0.025, n-1) 
     if end == "lower":
         zalpha = 1.96
     elif end == "upper":
@@ -22,6 +25,8 @@ def chisq_crit(dof, end):
     return dof*(1. - 2./(9.*dof) + zalpha*np.sqrt(2./(9.*dof)))**3
 
 # Enough data to say sample var is close to pop variance
+# Could use t = scipy.stats.t.ppf(0.975, n-1) as done in HW 9.2 for exact.
+# Difference is about 0.02, so assumption OK.
 N = len(D)
 sample_mean = np.mean(D)
 sample_std = np.std(D, ddof=1)
@@ -126,7 +131,7 @@ for i in range(len(sigmalist)):
                 count += 1
         perc = count/Nsamples
         
-        if np.abs(perc-0.95) < 0.001:
+        if np.abs(perc-0.95) < 0.01:
             my_list_sigma.append([sigmalist[i], sigmalist[j], sigmalist[j]-sigmalist[i], perc])
             
 min_idx_sigma  = np.argmin(np.array(my_list_sigma)[:,2])
